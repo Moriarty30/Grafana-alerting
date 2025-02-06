@@ -108,4 +108,4 @@ def webhook_correo():
     return jsonify({"error": "Invalid request","EMAIL_USER": EMAIL_USER, "EMAIL_PASS": EMAIL_PASS,"EMAIL_RECIPIENTS": EMAIL_RECIPIENTS}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8000)))
