@@ -91,6 +91,10 @@ def webhook_whatsapp():
 
 @app.route('/webhookCorreo', methods=['POST'])
 def webhook_correo():
+    print("EMAIL_USER:", EMAIL_USER)
+    print("EMAIL_PASS:", EMAIL_PASS)
+    print("EMAIL_RECIPIENTS:", EMAIL_RECIPIENTS)
+
     if request.method == 'POST':
         data = request.get_json()
         if not data:
@@ -101,7 +105,7 @@ def webhook_correo():
 
         return jsonify({"message": "Correo enviado", "response": response}), 200
 
-    return jsonify({"error": "Invalid request"}), 400
+    return jsonify({"error": "Invalid request","EMAIL_USER": EMAIL_USER, "EMAIL_PASS": EMAIL_PASS,"EMAIL_RECIPIENTS": EMAIL_RECIPIENTS}), 400
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
